@@ -10,7 +10,10 @@ export default function Home() {
   return (
     <>
       <button onClick={() => setOpen(true)}>Open</button>
-      <BottomSheet open={open}>My awesome content here</BottomSheet>
+      <BottomSheet
+        onDismiss={() => setOpen(false)}
+        snapPoints={({ minHeight, maxHeight }) => [minHeight, maxHeight]}
+        open={open}>My awesome content here</BottomSheet>
     </>
   )
 }
