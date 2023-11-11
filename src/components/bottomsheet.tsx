@@ -11,6 +11,7 @@ const Bottomsheet = () => {
                 className="text-red-500"
             >Open Me</button> */}
             <BottomSheet
+                className="md:hidden"
                 blocking={false}
                 onDismiss={() => setOpen(false)}
                 snapPoints={({ minHeight, maxHeight }) => [minHeight, maxHeight]}
