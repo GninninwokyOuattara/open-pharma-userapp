@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/leaflet": "^1.9.8",
+    "leaflet": "^1.9.4",
     "next": "14.0.1",
     "postcss-custom-properties-fallback": "^1.0.2",
     "react": "^18",
     "react-dom": "^18",
+    "react-leaflet": "^4.2.1",
     "react-spring-bottom-sheet": "3.5.0-alpha.0"
   },
   "devDependencies": {
