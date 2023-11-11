@@ -414,6 +414,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	background: #fff;
 	background: rgba(255, 255, 255, 0.8);
 	margin: 0;
+    display: none;
 	}
 .leaflet-control-attribution,
 .leaflet-control-scale-line {
@@ -659,3 +660,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 		print-color-adjust: exact;
 		}
 	}
+
+.leaflet-control { z-index: 0 !important}
+.leaflet-pane { z-index: 0 !important}
+.leaflet-top, .leaflet-bottom {z-index: 0 !important}
