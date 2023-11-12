@@ -1,33 +1,24 @@
 'use client';
 
 import "@/styles/leafletMap.style.css";
+import { FunctionalComponentWithPharmaciesAsProps } from "@/types";
 import L, { LatLngExpression } from "leaflet";
 import { useEffect } from "react";
-import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import LeafletMarkers from "./leafletMarkers";
 
-declare module 'leaflet' {
-    interface Map {
-        panToOffset(
-            latlng: L.LatLngExpression,
-            offset: L.PointExpression,
-            options?: L.ZoomPanOptions
-        ): L.Map;
-        _zoom: number;
-    }
-}
-
-const LeafletMap = () => {
+export const openIcon = L.icon({
+    iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
+    shadowSize: [41, 41]
+})
 
 
-    const openIcon = L.icon({
-        iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
-        shadowSize: [41, 41]
-    })
 
+const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) => {
 
 
     return (
@@ -53,14 +44,16 @@ const LeafletMap = () => {
 
                     <LeafletMapInitialCenterPaddingHandler />
 
-                    <Marker
+                    {/* <Marker
 
                         position={[5.393471, -4.0055429]}
                         icon={openIcon}
 
                     >
 
-                    </Marker>
+                    </Marker> */}
+
+                    <LeafletMarkers pharmacies={pharmacies} />
                 </MapContainer>
             </div>
 
