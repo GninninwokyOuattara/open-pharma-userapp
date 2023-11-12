@@ -1,5 +1,6 @@
 import "@/styles/bottomsheet.style.css"
 import { BottomSheet } from "react-spring-bottom-sheet"
+import PharmacyItem from "./pharmacyItem"
 
 
 const Bottomsheet = () => {
@@ -12,8 +13,13 @@ const Bottomsheet = () => {
                 defaultSnap={({ maxHeight }) => maxHeight / 2.5}
                 snapPoints={({ minHeight, maxHeight }) => [25, maxHeight / 2.5, maxHeight]}
                 open>
-                <div>
-                    Awesome content right there !
+                <div className="p-2">
+                    <PharmacyItem />
+                    <PharmacyItem />
+                    <PharmacyItem />
+                    <PharmacyItem />
+                    <PharmacyItem />
+                    <PharmacyItem />
                 </div>
             </BottomSheet>
         </>
