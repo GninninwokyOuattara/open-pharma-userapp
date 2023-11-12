@@ -1,7 +1,7 @@
 import { Pharmacy } from '@/types';
 import React from 'react';
-import { Marker } from 'react-leaflet';
-import { openIcon } from './leafletMap';
+import { activeIcon, openIcon } from './leafletMap';
+import LeafletMarker from './leafletMarker';
 
 
 interface Props {
@@ -14,11 +14,20 @@ const LeafletMarkers: React.FC<Props> = ({ pharmacies }) => {
         <>
             {
                 pharmacies.map((pharmacy) => {
+
+                    if (pharmacy.open) {
+                        return (
+                            <LeafletMarker
+                                pharmacy={pharmacy}
+                                icon={openIcon}
+                            />
+                        )
+                    }
+
                     return (
-                        <Marker
-                            key={pharmacy.id}
-                            position={[pharmacy.coordinates.latitude, pharmacy.coordinates.longitude]}
-                            icon={openIcon}
+                        <LeafletMarker
+                            pharmacy={pharmacy}
+                            icon={activeIcon}
                         />
                     )
                 })
