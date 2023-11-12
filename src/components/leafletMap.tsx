@@ -51,7 +51,7 @@ const LeafletMap = () => {
                     />
 
 
-                    <MapCenterResponsiveController />
+                    <LeafletMapInitialCenterPaddingHandler />
 
                     <Marker
 
@@ -71,34 +71,29 @@ const LeafletMap = () => {
 }
 
 
-const MapCenterResponsiveController = () => {
-
+const LeafletMapInitialCenterPaddingHandler = () => {
     const map = useMap();
-
-    const recenter = (latlng: LatLngExpression, offsetx: number, offsety: number) => {
-        console.log("REcentering")
-        console.log("Map", map)
+    const centerMap = (latlng: LatLngExpression, offsetx: number, offsety: number) => {
         let center = map.project(latlng);
         center = new L.Point(center.x - offsetx, center.y - offsety);
         let target = map.unproject(center);
         map.panTo(target);
     }
+    const initialRenderMapCenterPaddingHandler = () => {
+        const windowWidth = window.innerWidth;
+        const mapCurrentCenter = map.getCenter();
+        if (windowWidth <= 768) {
+            centerMap(mapCurrentCenter, 0, -100);
+        } else {
+            centerMap(mapCurrentCenter, 0, 0);
+        }
+    }
 
     useEffect(() => {
-        // get the current window width
-        let width = window.innerWidth
-        console.log("inner width", innerWidth)
-        if (width <= 768) {
-            recenter([5.393471, -4.0055429], 0, -100)
-        }
+        initialRenderMapCenterPaddingHandler();
     }, [])
 
-    return (
-        <div
-            className="z-100 w-10 h-10 bg-red-500 absolute"
-            onClick={() => console.log("Map", map)}
-        >Hello World</div>
-    )
+    return null
 }
 
 export default LeafletMap
