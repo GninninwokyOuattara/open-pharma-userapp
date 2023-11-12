@@ -1,10 +1,10 @@
+import { Pharmacy } from "@/types";
 import axios from "axios";
 
-export const getPharmacies = async () => {
+export const getPharmacies = async (): Promise<Pharmacy[]> => {
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_API_URL}/api/pharmacies/`
   );
 
-  console.log("pharmacies", response.data);
   return response.data;
 };
