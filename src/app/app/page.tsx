@@ -2,16 +2,8 @@
 
 import Bottomsheet from "@/components/bottomsheet";
 import { getPharmacies } from "@/queries/getPharmacies";
-// import LeafletMap from "@/components/leafletMap";
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
-
-// const getStaticProps = async () => {
-//     const res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-//     const data = await res.json()
-//     return { props: { data } }
-// }
-
 
 
 export default async function Home() {
@@ -38,7 +30,8 @@ export default async function Home() {
                     <LeafletMap />
                 </div>
             </div>
-            <Bottomsheet />
+            <Bottomsheet
+                pharmacies={initialData} />
         </main>
     )
 }
