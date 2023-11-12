@@ -1,9 +1,17 @@
-import "@/styles/bottomsheet.style.css"
-import { BottomSheet } from "react-spring-bottom-sheet"
-import PharmacyItem from "./pharmacyItem"
+'use client';
+
+import "@/styles/bottomsheet.style.css";
+import { Pharmacy } from "@/types";
+import { BottomSheet } from "react-spring-bottom-sheet";
+import PharmacyItem from "./pharmacyItem";
 
 
-const Bottomsheet = () => {
+interface Props {
+    pharmacies: Pharmacy[]
+}
+
+const Bottomsheet: React.FC<Props> = ({ pharmacies }) => {
+    console.log("Premiere pharmacie recue", pharmacies[0])
     return (
         <>
             <BottomSheet
@@ -14,12 +22,16 @@ const Bottomsheet = () => {
                 snapPoints={({ minHeight, maxHeight }) => [25, maxHeight / 2.5, maxHeight]}
                 open>
                 <div className="p-2">
-                    <PharmacyItem />
-                    <PharmacyItem />
-                    <PharmacyItem />
-                    <PharmacyItem />
-                    <PharmacyItem />
-                    <PharmacyItem />
+                    {
+                        pharmacies.map((pharmacy) => {
+                            return (
+                                <PharmacyItem
+                                    key={pharmacy.id}
+                                    pharmacy={pharmacy}
+                                />
+                            )
+                        })
+                    }
                 </div>
             </BottomSheet>
         </>
