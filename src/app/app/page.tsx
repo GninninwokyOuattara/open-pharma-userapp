@@ -1,13 +1,21 @@
 'use client';
 
 import Bottomsheet from "@/components/bottomsheet";
+import { getPharmacies } from "@/queries/getPharmacies";
 // import LeafletMap from "@/components/leafletMap";
 import dynamic from "next/dynamic";
 import { useMemo } from "react";
 
+// const getStaticProps = async () => {
+//     const res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+//     const data = await res.json()
+//     return { props: { data } }
+// }
 
 
-export default function Home() {
+
+export default async function Home() {
+
 
     const LeafletMap = useMemo(() => dynamic(
         () => import('@/components/leafletMap'),
@@ -16,6 +24,9 @@ export default function Home() {
             ssr: false
         }
     ), [])
+
+    const initialData = await getPharmacies()
+
     return (
         <main
             className="h-screen w-screen"
