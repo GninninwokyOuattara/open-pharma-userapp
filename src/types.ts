@@ -9,3 +9,10 @@ export interface Pharmacy {
   coordinates: Coordinates;
   open: boolean;
 }
+
+export interface ComponentsWithPharmaciesAsProps {
+  pharmacies: Pharmacy[];
+}
+
+export type FunctionalComponentWithPharmaciesAsProps =
+  React.FC<ComponentsWithPharmaciesAsProps>;
