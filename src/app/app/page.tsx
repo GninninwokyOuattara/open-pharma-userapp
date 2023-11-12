@@ -1,11 +1,21 @@
 'use client';
 
 import Bottomsheet from "@/components/bottomsheet";
-import LeafletMap from "@/components/leafletMap";
+// import LeafletMap from "@/components/leafletMap";
+import dynamic from "next/dynamic";
+import { useMemo } from "react";
 
 
 
 export default function Home() {
+
+    const LeafletMap = useMemo(() => dynamic(
+        () => import('@/components/leafletMap'),
+        {
+            loading: () => <p>Loading...</p>,
+            ssr: false
+        }
+    ), [])
     return (
         <main
             className="h-screen w-screen"
