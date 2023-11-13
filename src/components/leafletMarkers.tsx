@@ -18,6 +18,7 @@ const LeafletMarkers: React.FC<Props> = ({ pharmacies }) => {
                     if (pharmacy.open) {
                         return (
                             <LeafletMarker
+                                key={pharmacy.id}
                                 pharmacy={pharmacy}
                                 icon={openIcon}
                             />
@@ -26,6 +27,7 @@ const LeafletMarkers: React.FC<Props> = ({ pharmacies }) => {
 
                     return (
                         <LeafletMarker
+                            key={pharmacy.id}
                             pharmacy={pharmacy}
                             icon={activeIcon}
                         />

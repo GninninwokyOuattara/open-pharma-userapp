@@ -84,25 +84,29 @@ const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) =>
 
 const LeafletMapInitialCenterPaddingHandler = () => {
     const map = useMap();
-    const centerMap = (latlng: LatLngExpression, offsetx: number, offsety: number) => {
-        let center = map.project(latlng);
-        center = new L.Point(center.x - offsetx, center.y - offsety);
-        let target = map.unproject(center);
-        map.panTo(target);
-    }
-    const initialRenderMapCenterPaddingHandler = () => {
-        const windowWidth = window.innerWidth;
-        const mapCurrentCenter = map.getCenter();
-        if (windowWidth <= 768) {
-            centerMap(mapCurrentCenter, 0, -100);
-        } else {
-            centerMap(mapCurrentCenter, 0, 0);
-        }
-    }
+
+
 
     useEffect(() => {
+
+        const centerMap = (latlng: LatLngExpression, offsetx: number, offsety: number) => {
+            let center = map.project(latlng);
+            center = new L.Point(center.x - offsetx, center.y - offsety);
+            let target = map.unproject(center);
+            map.panTo(target);
+        }
+        const initialRenderMapCenterPaddingHandler = () => {
+            const windowWidth = window.innerWidth;
+            const mapCurrentCenter = map.getCenter();
+            if (windowWidth <= 768) {
+                centerMap(mapCurrentCenter, 0, -100);
+            } else {
+                centerMap(mapCurrentCenter, 0, 0);
+            }
+        }
+
         initialRenderMapCenterPaddingHandler();
-    }, [])
+    }, [map])
 
     return null
 }
