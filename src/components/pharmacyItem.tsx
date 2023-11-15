@@ -3,11 +3,13 @@ import Ping from "./ping"
 
 interface Props {
     pharmacy: Pharmacy | PharmacyWithDistanceToUser
+    onClick?: () => void
 }
-const PharmacyItem: React.FC<Props> = ({ pharmacy }) => {
+const PharmacyItem: React.FC<Props> = ({ pharmacy, onClick }) => {
     return (
         <div
             className="border-b-2 py-4  flex flex-col gap-2"
+            onClick={onClick}
         >
             <div className="flex flex-row gap-2 items-center">
                 <p className="font-medium flex-auto">{pharmacy.name}</p>
