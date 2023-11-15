@@ -1,5 +1,6 @@
 'use client';
 
+import { LeafletProvider } from '@/app/contexts/leafletContext';
 import { usePharmacies } from '@/app/contexts/pharmaciesContext';
 import { getPharmaciesWithDistanceToUser, sortPharmaciesByDistanceAsc } from '@/app/utils/pharmacies-processors';
 import useUserLocation from '@/hooks/useUserLocation';
@@ -42,17 +43,20 @@ const AppPageContainer: React.FC<Props> = ({ pharmacies: pharmaciesDatas }) => {
 
     return (
         <>
-            <div id="mainContainer"
-                className="flex flex-column h-full">
-                <aside className="hidden md:flex w-[40%] max-w-[500px] p-2 h-full">
-                    <SidebarContent pharmacies={processedPharmacies} />
-                </aside>
-                <div className=" flex-1 h-full md:p-2">
-                    <LeafletMap pharmacies={pharmacies} />
+            <LeafletProvider>
+                <div id="mainContainer"
+                    className="flex flex-column h-full">
+                    <aside className="hidden md:flex w-[40%] max-w-[500px] p-2 h-full">
+                        <SidebarContent pharmacies={processedPharmacies} />
+                    </aside>
+                    <div className=" flex-1 h-full md:p-2">
+                        <LeafletMap pharmacies={pharmacies} />
+                    </div>
                 </div>
-            </div>
-            <Bottomsheet
-                pharmacies={processedPharmacies} />
+                <Bottomsheet
+                    pharmacies={processedPharmacies} />
+            </LeafletProvider>
+
         </>
     )
 }

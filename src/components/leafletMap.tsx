@@ -1,5 +1,6 @@
 'use client';
 
+import { useLeaflet } from "@/app/contexts/leafletContext";
 import useUserLocation from "@/hooks/useUserLocation";
 import "@/styles/leafletMap.style.css";
 import { FunctionalComponentWithPharmaciesAsProps } from "@/types";
@@ -13,6 +14,8 @@ import LeafletMarkers from "./leafletMarkers";
 const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) => {
 
 
+    const { leafletMapRef } = useLeaflet();
+
     return (
         <div id='map' className="w-full h-full flex flex-col shadow rounded-md bg-appPrimary">
 
@@ -25,6 +28,7 @@ const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) =>
                         height: "100%",
 
                     }}
+                    ref={leafletMapRef}
 
                 >
                     <TileLayer
