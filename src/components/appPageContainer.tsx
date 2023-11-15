@@ -1,5 +1,6 @@
 'use client';
 
+import useUserLocation from '@/hooks/useUserLocation';
 import { Pharmacy } from '@/types';
 import dynamic from 'next/dynamic';
 import React, { useMemo } from 'react';
@@ -18,6 +19,10 @@ const AppPageContainer: React.FC<Props> = ({ pharmacies }) => {
             ssr: false
         }
     ), [])
+
+    const { location, error } = useUserLocation();
+    console.log("location", location);
+    console.log("error", error);
     return (
         <>
             <div id="mainContainer"
