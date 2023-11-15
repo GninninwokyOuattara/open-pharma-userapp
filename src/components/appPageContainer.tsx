@@ -46,7 +46,7 @@ const AppPageContainer: React.FC<Props> = ({ pharmacies }) => {
                 </div>
             </div>
             <Bottomsheet
-                pharmacies={pharmacies} />
+                pharmacies={processedPharmacies} />
         </>
     )
 }
