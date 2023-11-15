@@ -11,7 +11,6 @@ interface Props {
 }
 
 const Bottomsheet: React.FC<Props> = ({ pharmacies }) => {
-    console.log("Premiere pharmacie recue", pharmacies[0])
     return (
         <>
             <BottomSheet
