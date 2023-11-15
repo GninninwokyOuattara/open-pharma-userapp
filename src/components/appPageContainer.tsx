@@ -1,5 +1,7 @@
 'use client';
 
+import { getPharmaciesWithDistanceToUser } from '@/app/utils/pharmacies-processors';
+import useUserLocation from '@/hooks/useUserLocation';
 import { Pharmacy } from '@/types';
 import dynamic from 'next/dynamic';
 import React, { useMemo } from 'react';
@@ -20,6 +22,15 @@ const AppPageContainer: React.FC<Props> = ({ pharmacies }) => {
         }
     ), [])
 
+    const { location } = useUserLocation()
+
+    pharmacies = useMemo(() => {
+        if (location) {
+            return getPharmaciesWithDistanceToUser(pharmacies, location)
+        } else {
+            return pharmacies
+        }
+    }, [location, pharmacies])
 
     return (
         <>
