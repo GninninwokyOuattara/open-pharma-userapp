@@ -1,5 +1,7 @@
-import { Pharmacy, PharmacyWithDistanceToUser } from "@/types"
-import React, { createContext, useCallback, useContext, useMemo } from "react"
+"use client";
+
+import { Pharmacy, PharmacyWithDistanceToUser } from "@/types";
+import React, { createContext, useCallback, useContext, useMemo } from "react";
 
 interface PharmaciesCtx {
     pharmacies: Pharmacy[] | PharmacyWithDistanceToUser[],
@@ -39,7 +41,8 @@ const PharmaciesProvider: React.FC<React.PropsWithChildren<{}>> = ({ children })
 }
 
 
-const usePharmacies = () => useContext(PharmaciesContext)
+export const usePharmacies = () => useContext(PharmaciesContext)
 
 
-export { PharmaciesProvider }
+export { PharmaciesProvider };
+

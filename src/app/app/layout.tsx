@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import Script from 'next/script'
 
 import Providers from '@/components/rq/providers'
+import { PharmaciesProvider } from '../contexts/pharmaciesContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,7 +27,9 @@ export default function RootLayout({
             />
             <body className={inter.className}>
                 <Providers>
-                    {children}
+                    <PharmaciesProvider>
+                        {children}
+                    </PharmaciesProvider>
                 </Providers>
             </body>
         </html>

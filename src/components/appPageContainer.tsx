@@ -1,5 +1,6 @@
 'use client';
 
+import { usePharmacies } from '@/app/contexts/pharmaciesContext';
 import { getPharmaciesWithDistanceToUser, sortPharmaciesByDistanceAsc } from '@/app/utils/pharmacies-processors';
 import useUserLocation from '@/hooks/useUserLocation';
 import { Pharmacy, PharmacyWithDistanceToUser } from '@/types';
@@ -12,7 +13,10 @@ interface Props {
     pharmacies: Pharmacy[]
 }
 
-const AppPageContainer: React.FC<Props> = ({ pharmacies }) => {
+const AppPageContainer: React.FC<Props> = ({ pharmacies: pharmaciesDatas }) => {
+
+    const { set, pharmacies } = usePharmacies()
+    set(pharmaciesDatas)
 
     const LeafletMap = useMemo(() => dynamic(
         () => import('@/components/leafletMap'),
