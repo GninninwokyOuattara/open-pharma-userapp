@@ -26,3 +26,9 @@ export const getPharmaciesWithDistanceToUser = (
   pharmacies: Pharmacy[],
   userPosition: Coordinates
 ) => pharmacies.map((pharmacy) => getDistanceToUser(pharmacy, userPosition));
+
+export const sortPharmaciesByDistanceAsc = (
+  pharmacies: PharmacyWithDistanceToUser[]
+) => {
+  return [...pharmacies].sort((a, b) => a.distanceRaw - b.distanceRaw);
+};

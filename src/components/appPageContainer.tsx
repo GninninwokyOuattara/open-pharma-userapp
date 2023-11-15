@@ -1,6 +1,6 @@
 'use client';
 
-import { getPharmaciesWithDistanceToUser } from '@/app/utils/pharmacies-processors';
+import { getPharmaciesWithDistanceToUser, sortPharmaciesByDistanceAsc } from '@/app/utils/pharmacies-processors';
 import useUserLocation from '@/hooks/useUserLocation';
 import { Pharmacy, PharmacyWithDistanceToUser } from '@/types';
 import dynamic from 'next/dynamic';
@@ -27,7 +27,9 @@ const AppPageContainer: React.FC<Props> = ({ pharmacies }) => {
     const processedPharmacies = useMemo(
         (): Pharmacy[] | PharmacyWithDistanceToUser[] => {
             if (location) {
-                const processedDatas = getPharmaciesWithDistanceToUser(pharmacies, location)
+                let processedDatas = getPharmaciesWithDistanceToUser(pharmacies, location)
+
+                processedDatas = sortPharmaciesByDistanceAsc(processedDatas)
                 return processedDatas
             } else {
                 return pharmacies
