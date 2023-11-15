@@ -1,6 +1,6 @@
 import { Pharmacy } from '@/types';
 import React from 'react';
-import { activeIcon, openIcon } from './leafletMap';
+import { activeIcon, openIcon } from './leaflet-icons';
 import LeafletMarker from './leafletMarker';
 
 
