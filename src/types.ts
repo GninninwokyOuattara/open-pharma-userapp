@@ -16,3 +16,8 @@ export interface ComponentsWithPharmaciesAsProps {
 
 export type FunctionalComponentWithPharmaciesAsProps =
   React.FC<ComponentsWithPharmaciesAsProps>;
+
+export interface PharmacyWithDistanceToUser extends Pharmacy {
+  distanceRaw: number;
+  distanceFormatted: string;
+}
