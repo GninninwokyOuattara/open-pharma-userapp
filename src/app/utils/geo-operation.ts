@@ -1,5 +1,12 @@
 import { Coordinates } from "@/types";
 
+const convertDistanceToHumanReadable = (distance: number) => {
+  if (distance / 1000 >= 1) {
+    distance = Math.round((distance / 1000 + Number.EPSILON) * 100) / 100;
+    return distance + " Km";
+  }
+  return Math.ceil(distance) + " M";
+};
 const calculateDistance = (pos1: Coordinates, pos2: Coordinates): number => {
   const { latitude: lat1, longitude: lon1 } = pos1;
   const { latitude: lat2, longitude: lon2 } = pos2;
@@ -21,12 +28,15 @@ const calculateDistance = (pos1: Coordinates, pos2: Coordinates): number => {
   return d;
 };
 
-const convertDistanceToHumanReadable = (distance: number) => {
-  if (distance / 1000 >= 1) {
-    distance = Math.round((distance / 1000 + Number.EPSILON) * 100) / 100;
-    return distance + " Km";
-  }
-  return Math.ceil(distance) + " M";
+const calculateDistanceHumanReadable = (
+  post1: Coordinates,
+  post2: Coordinates
+) => {
+  return convertDistanceToHumanReadable(calculateDistance(post1, post2));
 };
 
-export { calculateDistance, convertDistanceToHumanReadable };
+export {
+  calculateDistance,
+  calculateDistanceHumanReadable,
+  convertDistanceToHumanReadable,
+};
