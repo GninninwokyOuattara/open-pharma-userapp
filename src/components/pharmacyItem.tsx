@@ -1,8 +1,8 @@
-import { Pharmacy } from "@/types"
+import { Pharmacy, PharmacyWithDistanceToUser } from "@/types"
 import Ping from "./ping"
 
 interface Props {
-    pharmacy: Pharmacy
+    pharmacy: Pharmacy | PharmacyWithDistanceToUser
 }
 const PharmacyItem: React.FC<Props> = ({ pharmacy }) => {
     return (
@@ -11,8 +11,10 @@ const PharmacyItem: React.FC<Props> = ({ pharmacy }) => {
         >
             <div className="flex flex-row gap-2 items-center">
                 <p className="font-medium flex-auto">{pharmacy.name}</p>
-                <div className="flex flex-row items-center">
-                    <div className="text-gray-500 font-medium w-20 ">5 mètres</div>
+                <div className="flex flex-row items-center gap-2">
+                    {
+                        'distanceFormatted' in pharmacy && <div className="text-gray-500 font-medium  ">{pharmacy.distanceFormatted}</div>
+                    }
 
                     {pharmacy.open ? <Ping /> : <div className="w-1 h-2"></div>}
 

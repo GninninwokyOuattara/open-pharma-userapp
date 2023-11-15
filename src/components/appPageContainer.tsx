@@ -2,7 +2,7 @@
 
 import { getPharmaciesWithDistanceToUser } from '@/app/utils/pharmacies-processors';
 import useUserLocation from '@/hooks/useUserLocation';
-import { Pharmacy } from '@/types';
+import { Pharmacy, PharmacyWithDistanceToUser } from '@/types';
 import dynamic from 'next/dynamic';
 import React, { useMemo } from 'react';
 import Bottomsheet from './bottomsheet';
@@ -24,20 +24,22 @@ const AppPageContainer: React.FC<Props> = ({ pharmacies }) => {
 
     const { location } = useUserLocation()
 
-    pharmacies = useMemo(() => {
-        if (location) {
-            return getPharmaciesWithDistanceToUser(pharmacies, location)
-        } else {
-            return pharmacies
-        }
-    }, [location, pharmacies])
+    const processedPharmacies = useMemo(
+        (): Pharmacy[] | PharmacyWithDistanceToUser[] => {
+            if (location) {
+                const processedDatas = getPharmaciesWithDistanceToUser(pharmacies, location)
+                return processedDatas
+            } else {
+                return pharmacies
+            }
+        }, [location, pharmacies])
 
     return (
         <>
             <div id="mainContainer"
                 className="flex flex-column h-full">
                 <aside className="hidden md:flex w-[40%] max-w-[500px] p-2 h-full">
-                    <SidebarContent pharmacies={pharmacies} />
+                    <SidebarContent pharmacies={processedPharmacies} />
                 </aside>
                 <div className=" flex-1 h-full md:p-2">
                     <LeafletMap pharmacies={pharmacies} />
