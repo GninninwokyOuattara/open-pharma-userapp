@@ -13,7 +13,7 @@ const PharmacyItem: React.FC<Props> = ({ pharmacy }) => {
                 <p className="font-medium flex-auto">{pharmacy.name}</p>
                 <div className="flex flex-row items-center gap-2">
                     {
-                        'distanceFormatted' in pharmacy && <div className="text-gray-500 font-medium  ">{pharmacy.distanceFormatted}</div>
+                        'distanceFormatted' in pharmacy && <div className="text-gray-500 font-medium w-24 text-right">{pharmacy.distanceFormatted}</div>
                     }
 
                     {pharmacy.open ? <Ping /> : <div className="w-1 h-2"></div>}
