@@ -18,11 +18,6 @@ const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) =>
 
     const { leafletMapRef } = useLeaflet();
 
-
-
-
-
-
     return (
         <div id='map' className="w-full h-full flex flex-col shadow rounded-md bg-appPrimary">
 
