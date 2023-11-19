@@ -11,13 +11,12 @@ import Bottomsheet from './bottomsheet';
 import SidebarContent from './sidebarContent';
 
 interface Props {
-    pharmacies: Pharmacy[]
+    pharmacies?: Pharmacy[]
 }
 
-const AppPageContainer: React.FC<Props> = ({ pharmacies: pharmaciesDatas }) => {
+const AppPageContainer: React.FC<Props> = () => {
 
-    const { set, pharmacies } = usePharmacies()
-    set(pharmaciesDatas)
+    const { pharmacies } = usePharmacies()
 
     const LeafletMap = useMemo(() => dynamic(
         () => import('@/components/leafletMap'),

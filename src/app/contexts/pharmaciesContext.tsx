@@ -1,7 +1,8 @@
 "use client";
 
+import { getPharmacies } from "@/queries/getPharmacies";
 import { Pharmacy, PharmacyWithDistanceToUser } from "@/types";
-import React, { createContext, useCallback, useContext, useMemo } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useMemo } from "react";
 
 interface PharmaciesCtx {
     pharmacies: Pharmacy[] | PharmacyWithDistanceToUser[],
@@ -32,6 +33,15 @@ const PharmaciesProvider: React.FC<React.PropsWithChildren<{}>> = ({ children })
             set
         }
     }, [pharmacies])
+
+    useEffect(() => {
+        getPharmacies().then((initialData) => {
+            set(initialData)
+        }).catch((error) => {
+            console.error(error)
+        })
+
+    }, [])
 
     return (
         <PharmaciesContext.Provider value={value}>
