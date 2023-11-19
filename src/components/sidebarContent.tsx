@@ -1,23 +1,24 @@
 import { useLeaflet } from "@/app/contexts/leafletContext";
+import { usePharmacies } from "@/app/contexts/pharmaciesContext";
 import { FunctionalComponentWithPharmaciesAsProps } from "@/types";
 import PharmacyItem from "./pharmacyItem";
+import PharmacyShowModeController from "./pharmacyShowModeController";
 import SearchInput from "./searchInput";
 
 const SidebarContent: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) => {
 
     const { leafletMapRef } = useLeaflet();
+    const { showOpenOnly, setShowOpenOnly } = usePharmacies()
     return (
 
         <div className="flex flex-col w-full h-full overflow-hidden">
 
-            <div className="h-32 border-2 border-red-500 p-2 flex flex-col gap-1">
+            <div className="p-2 flex flex-col gap-1">
                 <SearchInput
-                    className="bg-gray-200"
+                    className="bg-white border-[2px] shadow-md"
                 />
 
-                <div className="h-2 border-2">
-
-                </div>
+                <PharmacyShowModeController />
 
             </div>
 

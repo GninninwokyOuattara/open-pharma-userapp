@@ -7,7 +7,9 @@ import React, { createContext, useCallback, useContext, useEffect, useMemo } fro
 interface PharmaciesCtx {
     pharmacies: Pharmacy[] | PharmacyWithDistanceToUser[],
     set: (pharmacies: Pharmacy[] | PharmacyWithDistanceToUser[]) => void
-    setSearch: (value: string) => void
+    setSearch: (value: string) => void,
+    showOpenOnly: boolean,
+    setShowOpenOnly: (value: boolean) => void
 }
 
 const PharmaciesContext = createContext<PharmaciesCtx>({
@@ -17,6 +19,10 @@ const PharmaciesContext = createContext<PharmaciesCtx>({
     },
     setSearch: () => {
         // do nothing
+    },
+    showOpenOnly: false,
+    setShowOpenOnly: () => {
+
     }
 })
 
@@ -26,6 +32,7 @@ const PharmaciesProvider: React.FC<React.PropsWithChildren<{}>> = ({ children })
 
     const [pharmacies, setPharmacies] = React.useState<Pharmacy[] | PharmacyWithDistanceToUser[]>([])
     const [searchString, setSearchString] = React.useState<string>("")
+    const [showOpenOnly, setShowOpenOnly] = React.useState<boolean>(false)
 
     const set = useCallback((pharmacies: Pharmacy[] | PharmacyWithDistanceToUser[]) => {
         setPharmacies(pharmacies)
@@ -43,6 +50,12 @@ const PharmaciesProvider: React.FC<React.PropsWithChildren<{}>> = ({ children })
         }, 500)
     }, [setSearchString])
 
+    const getOpenPharmaciesOnly = (pharmacies: Pharmacy[] | PharmacyWithDistanceToUser[]) => {
+
+        return pharmacies.filter((pharmacy) => {
+            return pharmacy.open
+        })
+    }
 
     // Filters
 
@@ -51,21 +64,33 @@ const PharmaciesProvider: React.FC<React.PropsWithChildren<{}>> = ({ children })
         const outputObject = {
             set,
             setSearch,
-            pharmacies
+            pharmacies,
+            showOpenOnly,
+            setShowOpenOnly
+        }
+        let filteredPharmacies: Pharmacy[] | PharmacyWithDistanceToUser[] = [];
+
+        if (showOpenOnly) {
+            filteredPharmacies = getOpenPharmaciesOnly(pharmacies)
+        } else {
+            filteredPharmacies = pharmacies
         }
 
-        if (searchString === "") {
-            return outputObject
+        if (searchString !== "") {
+
+            filteredPharmacies = filteredPharmacies.filter((pharmacy) => {
+                return pharmacy.name.toLowerCase().includes(searchString.toLowerCase())
+            })
+
         }
-        const filteredPharmacies = pharmacies.filter((pharmacy) => {
-            return pharmacy.name.toLowerCase().includes(searchString.toLowerCase())
-        })
+
+
 
         return {
             ...outputObject,
             pharmacies: filteredPharmacies
         }
-    }, [pharmacies, set, searchString, setSearch])
+    }, [pharmacies, set, searchString, setSearch, showOpenOnly])
 
     useEffect(() => {
         getPharmacies().then((initialData) => {

@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 import { userLocationIcon } from "./leaflet-icons";
 import LeafletMarkers from "./leafletMarkers";
+import PharmacyShowModeController from "./pharmacyShowModeController";
 import SearchInput from "./searchInput";
 
 
@@ -47,8 +48,9 @@ const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) =>
                     <LeafletMarkers pharmacies={pharmacies} />
                     <div className="md:hidden  absolute w-[70%]   left-1/2 transform -translate-x-1/2 top-3">
                         <SearchInput
-                            className="shadow-md h-12 text-lg"
+                            className="shadow-md h-12 text-lg mb-1"
                         />
+                        <PharmacyShowModeController />
                     </div>
                 </MapContainer>
             </div>
