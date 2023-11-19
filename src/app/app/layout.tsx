@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import Script from 'next/script'
 
 import Providers from '@/components/rq/providers'
 import Head from 'next/head'
@@ -33,11 +32,6 @@ export default function RootLayout({
                     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
                 />
             </Head>
-            <Script
-                src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-                integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-                crossOrigin=""
-            />
             <body className={inter.className}>
                 <Providers>
                     <PharmaciesProvider>
