@@ -65,7 +65,7 @@ const PharmaciesProvider: React.FC<React.PropsWithChildren<{}>> = ({ children })
             ...outputObject,
             pharmacies: filteredPharmacies
         }
-    }, [pharmacies, set, searchString])
+    }, [pharmacies, set, searchString, setSearch])
 
     useEffect(() => {
         getPharmacies().then((initialData) => {
