@@ -45,7 +45,6 @@ const PharmaciesProvider: React.FC<React.PropsWithChildren<{}>> = ({ children })
             clearTimeout(timeoutId.current)
         }
         timeoutId.current = setTimeout(() => {
-            console.log("Setting search to ", value)
             setSearchString(value)
         }, 500)
     }, [setSearchString])
