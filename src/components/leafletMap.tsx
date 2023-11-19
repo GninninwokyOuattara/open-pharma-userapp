@@ -103,7 +103,7 @@ const LeafletMapUserLocation = () => {
                 easy.remove()
             }
         }
-    }, [leafletMapRef.current, location])
+    }, [leafletMapRef, location])
 
 
     if (location) {

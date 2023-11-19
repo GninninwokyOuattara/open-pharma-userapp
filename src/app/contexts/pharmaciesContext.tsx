@@ -32,7 +32,7 @@ const PharmaciesProvider: React.FC<React.PropsWithChildren<{}>> = ({ children })
             pharmacies,
             set
         }
-    }, [pharmacies])
+    }, [pharmacies, set])
 
     useEffect(() => {
         getPharmacies().then((initialData) => {
@@ -41,7 +41,7 @@ const PharmaciesProvider: React.FC<React.PropsWithChildren<{}>> = ({ children })
             console.error(error)
         })
 
-    }, [])
+    }, [set])
 
     return (
         <PharmaciesContext.Provider value={value}>
