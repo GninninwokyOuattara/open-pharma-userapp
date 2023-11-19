@@ -1,5 +1,6 @@
 'use client';
 
+import { useLeaflet } from "@/app/contexts/leafletContext";
 import "@/styles/bottomsheet.style.css";
 import { Pharmacy } from "@/types";
 import { BottomSheet } from "react-spring-bottom-sheet";
@@ -11,6 +12,9 @@ interface Props {
 }
 
 const Bottomsheet: React.FC<Props> = ({ pharmacies }) => {
+
+    const { leafletMapRef } = useLeaflet();
+
     return (
         <>
             <BottomSheet
@@ -27,6 +31,9 @@ const Bottomsheet: React.FC<Props> = ({ pharmacies }) => {
                                 <PharmacyItem
                                     key={pharmacy.id}
                                     pharmacy={pharmacy}
+                                    onClick={() => {
+                                        leafletMapRef.current?.flyTo([pharmacy.coordinates.latitude, pharmacy.coordinates.longitude], 15)
+                                    }}
                                 />
                             )
                         })
