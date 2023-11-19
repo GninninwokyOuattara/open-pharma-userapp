@@ -1,0 +1,12 @@
+.user-location {
+    background-color: #fff;
+    color: #000;
+    font-weight: bolder;
+    width: 30px !important;
+    height: 30px ;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

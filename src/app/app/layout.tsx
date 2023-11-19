@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import Script from 'next/script'
 
 import Providers from '@/components/rq/providers'
+import Head from 'next/head'
 import { PharmaciesProvider } from '../contexts/pharmaciesContext'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,6 +21,18 @@ export default function RootLayout({
 
     return (
         <html lang="en">
+
+            <Head>
+                <link
+                    rel="stylesheet"
+                    type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+                />
+                <link
+                    rel="stylesheet"
+                    type="text/css"
+                    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+                />
+            </Head>
             <Script
                 src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
                 integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="

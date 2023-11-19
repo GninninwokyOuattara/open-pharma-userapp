@@ -2,9 +2,11 @@
 
 import { useLeaflet } from "@/app/contexts/leafletContext";
 import useUserLocation from "@/hooks/useUserLocation";
+import "@/styles/leafletEasyButton.style.css";
 import "@/styles/leafletMap.style.css";
 import { FunctionalComponentWithPharmaciesAsProps } from "@/types";
 import L, { LatLngExpression } from "leaflet";
+import "leaflet-easybutton";
 import { useEffect } from "react";
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 import { userLocationIcon } from "./leaflet-icons";
@@ -15,6 +17,11 @@ const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) =>
 
 
     const { leafletMapRef } = useLeaflet();
+
+
+
+
+
 
     return (
         <div id='map' className="w-full h-full flex flex-col shadow rounded-md bg-appPrimary">
@@ -85,6 +92,24 @@ const LeafletMapInitialCenterPaddingHandler = () => {
 
 const LeafletMapUserLocation = () => {
     const { location } = useUserLocation();
+    const { leafletMapRef } = useLeaflet()
+
+    useEffect(() => {
+        let easy: any
+        if (leafletMapRef.current && location) {
+            const easyButton = L.easyButton("<div class='user-location'><img src='/location-crosshairs-solid.svg' alt='SVG Image' style='width: 15px; height: 15px;'></div>", () => {
+                leafletMapRef.current?.setView([location.latitude, location.longitude], 15)
+            })
+            easy = easyButton.addTo(leafletMapRef.current)
+        }
+
+        return () => {
+            if (easy) {
+                easy.remove()
+            }
+        }
+    }, [leafletMapRef.current, location])
+
 
     if (location) {
         return <Marker
