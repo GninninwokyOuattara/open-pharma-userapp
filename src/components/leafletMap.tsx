@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { MapContainer, Marker, TileLayer, useMap } from "react-leaflet";
 import { userLocationIcon } from "./leaflet-icons";
 import LeafletMarkers from "./leafletMarkers";
+import SearchInput from "./searchInput";
 
 
 const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) => {
@@ -21,7 +22,7 @@ const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) =>
     return (
         <div id='map' className="w-full h-full flex flex-col shadow rounded-md bg-appPrimary">
 
-            <div className="w-full flex-grow rounded-md overflow-hidden">
+            <div className="w-full flex-grow rounded-md overflow-hidden relative">
                 <MapContainer
                     center={[5.393471, -4.0055429]}
                     zoom={15}
@@ -44,6 +45,11 @@ const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) =>
 
                     <LeafletMapUserLocation />
                     <LeafletMarkers pharmacies={pharmacies} />
+                    <div className="md:hidden  absolute w-[70%]   left-1/2 transform -translate-x-1/2 top-3">
+                        <SearchInput
+                            className="shadow-md h-12 text-lg"
+                        />
+                    </div>
                 </MapContainer>
             </div>
 

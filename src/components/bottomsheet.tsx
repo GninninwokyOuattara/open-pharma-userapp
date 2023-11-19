@@ -40,7 +40,7 @@ const Bottomsheet: React.FC<Props> = ({ pharmacies }) => {
                 blocking={false}
                 // onDismiss={() => setOpen(false)}
                 defaultSnap={({ maxHeight }) => maxHeight / 2.5}
-                snapPoints={({ minHeight, maxHeight }) => [25, maxHeight / 2.5, maxHeight]}
+                snapPoints={({ minHeight, maxHeight }) => [25, maxHeight / 2.5, maxHeight - 90]}
                 open>
                 <div className="p-2">
 
