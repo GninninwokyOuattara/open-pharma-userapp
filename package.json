@@ -13,6 +13,7 @@
     "@types/leaflet": "^1.9.8",
     "axios": "^1.6.1",
     "leaflet": "^1.9.4",
+    "leaflet-easybutton": "^2.4.0",
     "next": "14.0.1",
     "postcss-custom-properties-fallback": "^1.0.2",
     "react": "^18",
