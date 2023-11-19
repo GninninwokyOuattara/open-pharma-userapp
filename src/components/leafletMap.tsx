@@ -20,6 +20,13 @@ const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) =>
 
     const { leafletMapRef } = useLeaflet();
 
+    useEffect(() => {
+        setTimeout(() => {
+            console.log("Size invalidation")
+            leafletMapRef.current?.invalidateSize();
+        }, 1000)
+    }, [leafletMapRef])
+
     return (
         <div id='map' className="w-full h-full flex flex-col shadow rounded-md bg-appPrimary">
 
