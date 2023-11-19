@@ -1,4 +1,3 @@
-'use client';
 
 import { useLeaflet } from "@/app/contexts/leafletContext";
 import useUserLocation from "@/hooks/useUserLocation";
@@ -20,13 +19,6 @@ const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) =>
 
     const { leafletMapRef } = useLeaflet();
 
-    useEffect(() => {
-        setTimeout(() => {
-            console.log("Size invalidation")
-            leafletMapRef.current?.invalidateSize();
-        }, 1000)
-    }, [leafletMapRef])
-
     return (
         <div id='map' className="w-full h-full flex flex-col shadow rounded-md bg-appPrimary">
 
@@ -43,7 +35,7 @@ const LeafletMap: FunctionalComponentWithPharmaciesAsProps = ({ pharmacies }) =>
 
                 >
                     <TileLayer
-                        url="http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
+                        url="https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}"
                         subdomains={['mt0', 'mt1', 'mt2', 'mt3']} // Google Maps subdomains
                         attribution='&copy; <a href="https://www.google.com/maps">Google Maps</a>'
                     />
