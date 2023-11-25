@@ -1,3 +1,4 @@
+import LandingPagePharmaciesInfo from "@/components/landingPagePharmaciesInfo";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,7 +20,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="h-full w-full px-10 pt-12">
+        <div className=" w-full px-10 pt-12">
           <h1 className="text-5xl text-orange-300 font-bold">
             Votre Santé, Bien-Être à Portée de Main{" "}
             <span className="text-green-500">!</span>
@@ -75,24 +76,11 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="w-full mt-20 flex flex-col gap-5">
-            <div className="w-full flex flex-col items-center gap-3">
-              <h2 className="text-lg md:text-3xl font-bold text-gray-700">
-                Pharmacies de garde actuellement{" "}
-              </h2>
-              <h3 className="text-5xl text-green-500">167</h3>
-            </div>
-            <div className="w-full flex flex-col items-center gap-3">
-              <h2 className="text-lg md:text-3xl font-bold text-gray-700">
-                Nombre total de pharmacies trackées{" "}
-              </h2>
-              <h3 className="text-5xl ">344</h3>
-            </div>
-          </div>
+          <LandingPagePharmaciesInfo />
         </div>
-      </div>
-      <div className="w-full text-center mt-5">
-        Made with ❤️ by <Link href={"https://google.fr"}>this guy</Link>
+        <div className="w-full text-center mt-5">
+          Made with ❤️ by <Link href={"https://google.fr"}>this guy</Link>
+        </div>
       </div>
     </>
   );
