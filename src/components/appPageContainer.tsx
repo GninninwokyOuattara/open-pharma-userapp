@@ -35,7 +35,7 @@ const AppPageContainer: React.FC<Props> = () => {
 
   if (error && !locationErrorMessageSent.current) {
     locationErrorMessageSent.current = true;
-    alert("Impossible d'accéder à votre location.");
+    alert(error);
   }
 
   const processedPharmacies = useMemo(():
