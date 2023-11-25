@@ -9,7 +9,7 @@ import {
 import useUserLocation from "@/hooks/useUserLocation";
 import { Pharmacy, PharmacyWithDistanceToUser } from "@/types";
 import dynamic from "next/dynamic";
-import React, { useMemo } from "react";
+import React, { useMemo, useRef } from "react";
 import Bottomsheet from "./bottomsheet";
 import SidebarContent from "./sidebarContent";
 import AppLoadingPage from "./appLoadingPage";
@@ -20,6 +20,7 @@ interface Props {
 
 const AppPageContainer: React.FC<Props> = () => {
   const { pharmacies } = usePharmacies();
+  const locationErrorMessageSent = useRef(false);
 
   const LeafletMap = useMemo(
     () =>
@@ -30,7 +31,12 @@ const AppPageContainer: React.FC<Props> = () => {
     []
   );
 
-  const { location } = useUserLocation();
+  const { location, error } = useUserLocation();
+
+  if (error && !locationErrorMessageSent.current) {
+    locationErrorMessageSent.current = true;
+    alert("Impossible d'accéder à votre location.");
+  }
 
   const processedPharmacies = useMemo(():
     | Pharmacy[]
