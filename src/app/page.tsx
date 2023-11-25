@@ -1,8 +1,11 @@
 import LandingPagePharmaciesInfo from "@/components/landingPagePharmaciesInfo";
+import { getTrackingInformationsSummary } from "@/queries/getTrackingInformations";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const initialData = await getTrackingInformationsSummary();
+
   return (
     <>
       <div className="w-screen md:h-screen flex flex-col  bg-white">
@@ -76,7 +79,7 @@ export default function Home() {
             </div>
           </div>
 
-          <LandingPagePharmaciesInfo />
+          <LandingPagePharmaciesInfo initialData={initialData} />
         </div>
         <div className="w-full text-center mt-5">
           Made with ❤️ by <Link href={"https://google.fr"}>this guy</Link>
