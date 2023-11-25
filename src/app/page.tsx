@@ -7,8 +7,8 @@ export default async function Home() {
   const initialData = await getTrackingInformationsSummary();
 
   return (
-    <>
-      <div className="w-screen md:h-screen flex flex-col  bg-white">
+    <div className="w-full flex items-center justify-center">
+      <div className="max-w-5xl w-screen md:h-screen flex flex-col  bg-white">
         <div className="py-3 px-10 flex space-between w-full h-15">
           <div className=" w-full flex flex-row justify-between items-center">
             <div className="text-black font-bold text-xl">
@@ -24,13 +24,13 @@ export default async function Home() {
         </div>
 
         <div className=" w-full px-10 pt-12">
-          <h1 className="text-5xl text-orange-300 font-bold">
+          <h1 className="text-6xl text-orange-300 font-bold">
             Votre Santé, Bien-Être à Portée de Main{" "}
             <span className="text-green-500">!</span>
           </h1>
 
           <div className=" flex flex-1 flex-col md:flex-row w-full  text-white ">
-            <div className="md:w-1/2 flex flex-col gap-10">
+            <div className="md:w-1/2 flex flex-col gap-10 relative">
               <div className="flex flex-col gap-4">
                 <h1 className="text-4xl text-gray-900">
                   Localisez Instantanément Votre Pharmacie
@@ -66,7 +66,7 @@ export default async function Home() {
               </Link>
             </div>
 
-            <div className="hidden md:block w-full md:w-1/2">
+            <div className="hidden md:block w-full md:w-1/2 relative bottom-10">
               <Image
                 className=""
                 alt="logo"
@@ -91,6 +91,6 @@ export default async function Home() {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 }
