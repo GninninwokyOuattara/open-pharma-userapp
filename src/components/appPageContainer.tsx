@@ -12,6 +12,7 @@ import dynamic from "next/dynamic";
 import React, { useMemo } from "react";
 import Bottomsheet from "./bottomsheet";
 import SidebarContent from "./sidebarContent";
+import AppLoadingPage from "./appLoadingPage";
 
 interface Props {
   pharmacies?: Pharmacy[];
@@ -23,7 +24,7 @@ const AppPageContainer: React.FC<Props> = () => {
   const LeafletMap = useMemo(
     () =>
       dynamic(() => import("@/components/leafletMap"), {
-        loading: () => <p>Loading...</p>,
+        loading: () => <AppLoadingPage />,
         ssr: false,
       }),
     []
