@@ -18,7 +18,7 @@ export default async function Home() {
               href="/app"
               className="bg-green-500 text-white p-2 rounded-md"
             >
-              Ouvrir l'application
+              Ouvrir l&apos;application
             </Link>
           </div>
         </div>
@@ -48,8 +48,8 @@ export default async function Home() {
                 </div>
                 <p className="text-gray-800">
                   Nous vous donnons le pouvoir de localiser rapidement et
-                  d'accéder aux pharmacies à proximité, surtout lorsque vous en
-                  avez le plus besoin.
+                  d&apos;accéder aux pharmacies à proximité, surtout lorsque
+                  vous en avez le plus besoin.
                 </p>
                 <p className="text-gray-800">
                   Notre application vous assure de trouver des pharmacies
@@ -62,7 +62,7 @@ export default async function Home() {
                 href="/app"
                 className="border-2 border-green-500 shadow-md hover:shadow-lg text-green-500 p-2 rounded-2xl w-[12rem] self-center "
               >
-                Accéder à l'application
+                Accéder à l&apos;application
               </Link>
             </div>
 
