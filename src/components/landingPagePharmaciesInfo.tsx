@@ -19,7 +19,7 @@ const LandingPagePharmaciesInfo: React.FC<Props> = ({ initialData }) => {
   return (
     <div className="w-full my-20 flex flex-col gap-5">
       <div className="w-full flex flex-col items-center gap-3">
-        <h2 className="text-lg md:text-3xl font-bold text-gray-700">
+        <h2 className="text-lg md:text-3xl font-bold text-gray-700 text-center">
           Pharmacies de garde actuellement{" "}
         </h2>
         <h3 className="text-5xl text-green-500">
@@ -27,7 +27,7 @@ const LandingPagePharmaciesInfo: React.FC<Props> = ({ initialData }) => {
         </h3>
       </div>
       <div className="w-full flex flex-col items-center gap-3">
-        <h2 className="text-lg md:text-3xl font-bold text-gray-700">
+        <h2 className="text-lg md:text-3xl font-bold text-gray-700 text-center">
           Nombre total de pharmacies trackées{" "}
         </h2>
         <h3 className="text-5xl ">{initialData?.active_pharmacies || 0}</h3>

@@ -82,7 +82,13 @@ export default async function Home() {
           <LandingPagePharmaciesInfo initialData={initialData} />
         </div>
         <div className="w-full text-center mt-5">
-          Made with ❤️ by <Link href={"https://google.fr"}>this guy</Link>
+          Made with ❤️ by{" "}
+          <Link
+            href={"https://github.com/GninninwokyOuattara"}
+            className="text-orange-500"
+          >
+            this guy
+          </Link>
         </div>
       </div>
     </>
