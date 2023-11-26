@@ -35,7 +35,9 @@ const AppPageContainer: React.FC<Props> = () => {
 
   if (error && !locationErrorMessageSent.current) {
     locationErrorMessageSent.current = true;
-    alert(error);
+    alert(
+      "Impossible d'accéder à votre location. Impossible de vous proposer les pharmacies les plus proches."
+    );
   }
 
   const processedPharmacies = useMemo(():
