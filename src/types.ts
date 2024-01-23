@@ -21,3 +21,8 @@ export interface PharmacyWithDistanceToUser extends Pharmacy {
   distanceRaw: number;
   distanceFormatted: string;
 }
+
+export interface TrackingInformationResponse {
+  active_pharmacies: number;
+  open_pharmacies: number;
+}
