@@ -2,9 +2,11 @@ import { Pharmacy } from "@/types";
 import axios from "axios";
 
 export const getPharmacies = async (): Promise<Pharmacy[]> => {
-  const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/pharmacies/`
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/pharmacies/`,
+    { next: { revalidate: 60 * 10 } }
   );
+  const data = await response.json();
 
-  return response.data;
+  return data;
 };
